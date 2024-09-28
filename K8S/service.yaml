@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: spring-boot-service
 spec:
+  type: NodePort  # Change the service type to NodePort
   selector:
     app: spring-boot
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8080
+    port: 80              # This is the port accessible within the cluster
+    targetPort: 8080      # The port where your Spring Boot app listens
+    nodePort: 30007       # Optional: Specify a NodePort (within the range 30000-32767)
+
 
   
